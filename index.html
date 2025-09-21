@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Vue js Demais</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Preço camiseta</h1>
+        <p>Camisa - R$ <span class="preco"></span></p>
+        <button class="adicionar">Adicionar</button>
+        <button class="remover">Remover</button>
+        <span class="total"></span>
+        <p>Total - R$ <span class="precoTotal"></span></p>
+    </div>
+
+    <script>
+        const dados = {
+            preco: 50,
+            total: 0
+        }
+
+        const preco = document.querySelector('.preco')
+        const total = document.querySelector('.total')
+        const adicionar = document.querySelector('.adicionar')
+        const remover = document.querySelector('.remover')
+        const precoTotal = document.querySelector('.precoTotal')
+
+        preco.innerText = dados.preco;
+        total.innerText = dados.total;
+        precoTotal.innerText = dados.preco * dados.total;
+
+        function incrementar() {
+            dados.total++;
+        }
+
+        function diminuir() {
+            dados.total--;
+        }
+
+        adicionar.addEventListener("click", incrementar);
+        remover.addEventListener("click", diminuir);
+    </script>
+</body>
+</html>
