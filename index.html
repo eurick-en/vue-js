@@ -8,40 +8,37 @@
 </head>
 <body>
     <div id="app">
-        <h1>Preço camiseta</h1>
-        <p>Camisa - R$ <span class="preco"></span></p>
-        <button class="adicionar">Adicionar</button>
-        <button class="remover">Remover</button>
-        <span class="total"></span>
-        <p>Total - R$ <span class="precoTotal"></span></p>
+        {{ nome }} tem {{ idade }} anos.
+
+        {{idadeEmDias}} dias de vida.
     </div>
 
     <script>
-        const dados = {
-            preco: 50,
-            total: 0
+        function pessoa(nome, idade) {
+            this.nome = nome
+            this.idade = idade
         }
 
-        const preco = document.querySelector('.preco')
-        const total = document.querySelector('.total')
-        const adicionar = document.querySelector('.adicionar')
-        const remover = document.querySelector('.remover')
-        const precoTotal = document.querySelector('.precoTotal')
+        const pessoa1 = new pessoa('João', 25)
+        console.log(pessoa1)
 
-        preco.innerText = dados.preco;
-        total.innerText = dados.total;
-        precoTotal.innerText = dados.preco * dados.total;
+        const vm = new Vue ({
+            el: '#app',
+            data: {
+                nome: 'Lara',
+                idade: 19
+            },
 
-        function incrementar() {
-            dados.total++;
-        }
+            computed: {
+                idadeEmDias() {
+                    return this.idade * 365
+                }
 
-        function diminuir() {
-            dados.total--;
-        }
+            }
+        })
 
-        adicionar.addEventListener("click", incrementar);
-        remover.addEventListener("click", diminuir);
+        console.log(vm.idadeEmDias)
+
     </script>
 </body>
 </html>
